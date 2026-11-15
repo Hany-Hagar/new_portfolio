@@ -1,0 +1,7 @@
+base_locale: ar
+fallback_strategy: base_locale
+input_directory: lib/translation
+input_file_pattern: .i18n.json
+output_directory: lib/translation/gen
+output_file_name: translations.g.dart
+namespaces: true
