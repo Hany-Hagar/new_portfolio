@@ -274,6 +274,25 @@ class AppTheme {
         dividerColor: Colors.transparent,
       ),
 
+      // ───── Scrollbar (ظاهر طول الوقت) ─────
+      scrollbarTheme: ScrollbarThemeData(
+        thumbVisibility: const WidgetStatePropertyAll(true),
+        trackVisibility: const WidgetStatePropertyAll(true),
+        thickness: const WidgetStatePropertyAll(10),
+        radius: const Radius.circular(8),
+        crossAxisMargin: 2,
+        thumbColor: WidgetStateProperty.resolveWith(
+          (s) => s.contains(WidgetState.hovered) ||
+                  s.contains(WidgetState.dragged)
+              ? hint
+              : hint.withValues(alpha: 0.6),
+        ),
+        trackColor: WidgetStatePropertyAll(
+          isDark ? Colors.white.withValues(alpha: 0.04) : border.withValues(alpha: 0.4),
+        ),
+        trackBorderColor: WidgetStatePropertyAll(border),
+      ),
+
       // ───── Bottom Navigation ─────
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         elevation: 0,
