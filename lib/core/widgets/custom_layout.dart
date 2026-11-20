@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 class CustomLayout extends StatelessWidget {
   final Widget body;
   final Color? color;
+  final Widget appBar;
   final ScrollController controller;
 
   const CustomLayout({
     super.key,
     this.color,
-    required this.controller,
     required this.body,
+    required this.appBar,
+    required this.controller,
   });
 
   @override
@@ -32,7 +34,10 @@ class CustomLayout extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: ConstrainedBox(
                       constraints: const BoxConstraints(maxWidth: 1200),
-                      child: body,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [appBar, body],
+                      ),
                     ),
                   ),
                 ),

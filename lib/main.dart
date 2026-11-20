@@ -1,7 +1,10 @@
 import 'core/utils/theme.dart';
+
 import 'package:flutter/material.dart';
+
 import 'translation/gen/translations.g.dart';
 import 'features/layout/pages/views/layout_view.dart';
+
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future<void> main() async {
