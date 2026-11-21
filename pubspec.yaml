@@ -18,7 +18,9 @@ dependencies:
 
   slang: ^4.19.2
   url_launcher: ^6.3.3
+  flutter_bloc: ^9.1.1
   slang_flutter: ^4.19.0
+
 
 dev_dependencies:
   flutter_test:

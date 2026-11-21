@@ -1,19 +1,20 @@
 import 'custom_text.dart';
 import '../enums/device_type.dart';
 import '../models/action_model.dart';
+
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
   final String title;
   final int currentAction;
-  final Function(int)? actionTap;
+  final ValueChanged<int>? actionTap;
   final List<ActionModel>? actions;
   const CustomAppBar({
     super.key,
     this.actions,
     this.actionTap,
     required this.title,
-    this.currentAction = 1,
+    this.currentAction = 0,
   });
 
   @override
@@ -64,7 +65,7 @@ class _Title extends StatelessWidget {
 
 class _Actions extends StatelessWidget {
   final int current;
-  final Function(int)? onTap;
+  final ValueChanged<int>? onTap;
   final List<ActionModel> actions;
   const _Actions({
     required this.actions,
@@ -74,9 +75,10 @@ class _Actions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (!context.isDesktop) return Icon(Icons.menu);
+    if (!context.isDesktop) return const Icon(Icons.menu);
     return Row(
       spacing: 10,
+      mainAxisSize: MainAxisSize.min,
       children: actions
           .map(
             (e) => _ActionButton(
@@ -93,7 +95,7 @@ class _Actions extends StatelessWidget {
 class _ActionButton extends StatelessWidget {
   final bool isActive;
   final ActionModel action;
-  final Function(int)? onTap;
+  final ValueChanged<int>? onTap;
   const _ActionButton({
     required this.action,
     required this.isActive,
@@ -107,12 +109,12 @@ class _ActionButton extends StatelessWidget {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: TextButton(
-        onPressed: onTap?.call(action.id),
+        onPressed: onTap == null ? null : () => onTap!(action.id),
         child: CustomText(
           size: 15,
           color: color,
           text: action.name,
-          type: isActive ? FontType.header : FontType.small,
+          type: isActive ? FontType.header : FontType.medium,
           opacity: isActive ? FontOpacity.high : FontOpacity.medium,
         ),
       ),

@@ -1,7 +1,10 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'core/utils/theme.dart';
 
 import 'package:flutter/material.dart';
 
+import 'features/layout/manager/layout_cubit.dart';
 import 'translation/gen/translations.g.dart';
 import 'features/layout/pages/views/layout_view.dart';
 
@@ -19,15 +22,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
-      home: const LayoutView(),
-      debugShowCheckedModeBanner: false,
-      title: 'Hany Magdy | Flutter Developer',
-      supportedLocales: AppLocaleUtils.supportedLocales,
-      locale: TranslationProvider.of(context).flutterLocale,
-      localizationsDelegates: GlobalMaterialLocalizations.delegates,
+    return BlocProvider(
+      create: (context) => LayoutCubit(),
+      child: MaterialApp(
+        theme: AppTheme.light,
+        darkTheme: AppTheme.dark,
+        home: const LayoutView(),
+        debugShowCheckedModeBanner: false,
+        title: 'Hany Magdy | Flutter Developer',
+        supportedLocales: AppLocaleUtils.supportedLocales,
+        locale: TranslationProvider.of(context).flutterLocale,
+        localizationsDelegates: GlobalMaterialLocalizations.delegates,
+      ),
     );
   }
 }
