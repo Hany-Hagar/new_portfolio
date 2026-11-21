@@ -1,13 +1,9 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'core/utils/theme.dart';
-
 import 'package:flutter/material.dart';
-
-import 'features/layout/manager/layout_cubit.dart';
 import 'translation/gen/translations.g.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'features/layout/manager/layout_cubit.dart';
 import 'features/layout/pages/views/layout_view.dart';
-
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future<void> main() async {
