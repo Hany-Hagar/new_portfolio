@@ -1,6 +1,9 @@
 import '../widgets/home_body.dart';
 import '../widgets/home_avatar.dart';
+
 import 'package:flutter/material.dart';
+
+import '../widgets/home_tech_banner.dart';
 import '../../../../core/widgets/custom_view.dart';
 
 class HomeView extends StatelessWidget {
@@ -16,6 +19,7 @@ class HomeView extends StatelessWidget {
           Expanded(child: HomeAvatar()),
         ],
       ),
+      bottom: HomeTechBanner(),
     );
   }
 }
