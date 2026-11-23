@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../../../../core/enums/font_type.dart';
 import '../../../../core/widgets/custom_text.dart';
-
 import 'package:flutter_animate/flutter_animate.dart';
 
 class HomeTechBanner extends StatelessWidget {
@@ -20,7 +18,11 @@ class HomeTechBanner extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           child: const _TechBannerRow()
               .animate(onPlay: (c) => c.repeat())
-              .slideX(end: -0.5, curve: Curves.linear, duration: 26.seconds),
+              .slideX(
+                end: -0.5,
+                curve: Curves.linear,
+                duration: 26.seconds,
+              ),
         ),
       ],
     );
