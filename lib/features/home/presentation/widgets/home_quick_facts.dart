@@ -1,12 +1,14 @@
-import '../../models/quick_fact.dart';
 import 'package:countup/countup.dart';
 import 'package:flutter/material.dart';
+import '../../data/models/quick_fact.dart';
 import '../../../../core/utils/styles.dart';
 import '../../../../core/enums/font_type.dart';
 import '../../../../core/widgets/custom_text.dart';
 
 class QuickFacts extends StatelessWidget {
-  const QuickFacts({super.key});
+  final List<QuickFact> quickFacts;
+
+  const QuickFacts({super.key, required this.quickFacts});
 
   @override
   Widget build(BuildContext context) {

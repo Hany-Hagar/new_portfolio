@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../data/database/home_data.dart';
+import '../../data/models/floating_note.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:new_portfolio/core/widgets/custom_chip.dart';
@@ -8,17 +10,17 @@ class HomeAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const AspectRatio(
+    return AspectRatio(
       aspectRatio: 1,
       child: Stack(
         fit: StackFit.expand,
         clipBehavior: Clip.none,
         children: [
-          _OuterRing(),
-          _DashedRing(),
-          _InnerDisc(),
-          _AvatarImage(),
-          _Notes(),
+          const _OuterRing(),
+          const _DashedRing(),
+          const _InnerDisc(),
+          _AvatarImage(avatar: homeData.avatar),
+          _Notes(notes: homeData.avatarNotes, jobTitle: homeData.jobTitle),
         ],
       ),
     );
@@ -102,7 +104,9 @@ class _InnerDisc extends StatelessWidget {
 }
 
 class _AvatarImage extends StatelessWidget {
-  const _AvatarImage();
+  final String avatar;
+
+  const _AvatarImage({required this.avatar});
 
   @override
   Widget build(BuildContext context) {
@@ -110,14 +114,17 @@ class _AvatarImage extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       child: FractionallySizedBox(
         widthFactor: 0.84,
-        child: Image.asset('assets/images/avatar.png', fit: BoxFit.contain),
+        child: Image.asset(avatar, fit: BoxFit.contain),
       ),
     );
   }
 }
 
 class _Notes extends StatelessWidget {
-  const _Notes();
+  final String jobTitle;
+  final List<FloatingNote> notes;
+
+  const _Notes({required this.notes, required this.jobTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -126,19 +133,19 @@ class _Notes extends StatelessWidget {
       children: [
         Positioned(
           top: 16,
-          right: -0,
+          right: 0,
           child: _FloatingNote(
-            title: 'FIREBASE CLOUD MESSAGING',
-            message: 'New order received',
-            floatDuration: Duration(milliseconds: 2500),
+            title: notes[0].title,
+            message: notes[0].message,
+            floatDuration: const Duration(milliseconds: 2500),
           ),
         ),
         Positioned(
           bottom: 44,
           child: _FloatingNote(
-            title: 'CURRENTLY',
-            message: 'American Soft · 2026 – Present',
-            floatDuration: Duration(milliseconds: 3000),
+            title: notes[1].title,
+            message: notes[1].message,
+            floatDuration: const Duration(milliseconds: 3000),
           ),
         ),
         Positioned(
@@ -146,7 +153,7 @@ class _Notes extends StatelessWidget {
           right: 0,
           bottom: -12,
           child: CustomChip(
-            label: 'Flutter Developer',
+            label: jobTitle,
             leading: CircleAvatar(
               radius: 3.5,
               backgroundColor: Theme.of(context).colorScheme.primary,

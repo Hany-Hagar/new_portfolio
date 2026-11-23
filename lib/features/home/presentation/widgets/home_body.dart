@@ -1,5 +1,6 @@
 import 'home_quick_facts.dart';
 import 'package:flutter/material.dart';
+import '../../data/database/home_data.dart';
 import '../../../../core/enums/font_type.dart';
 import '../../../layout/manager/layout_cubit.dart';
 import '../../../../core/widgets/custom_text.dart';
@@ -11,23 +12,31 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       spacing: 18,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _Tag(),
-        _Title(),
-        _Description(),
-        _Buttons(),
-        CustomDivider(endIndent: 14, padding: EdgeInsets.only(top: 10),),
-        QuickFacts(),
+        _Tag(tag: homeData.tag),
+        _Title(
+          title: homeData.title,
+          highlightedTitle: homeData.highlightedTitle,
+        ),
+        _Description(
+          skills: homeData.skills,
+          description: homeData.description,
+        ),
+        const _Buttons(),
+        const CustomDivider(endIndent: 14, padding: EdgeInsets.only(top: 10)),
+        QuickFacts(quickFacts: homeData.quickFacts),
       ],
     );
   }
 }
 
 class _Tag extends StatelessWidget {
-  const _Tag();
+  final String tag;
+
+  const _Tag({required this.tag});
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +52,12 @@ class _Tag extends StatelessWidget {
           decoration: BoxDecoration(color: primary, shape: BoxShape.circle),
         ),
         CustomText(
+          text: tag,
           size: 12,
           color: primary,
           letterSpacing: 0.96,
           type: FontType.medium,
           fontFamily: FontFamily.inter.value,
-          text: 'FLUTTER DEVELOPER · CAIRO, EGYPT',
         ),
       ],
     );
@@ -56,7 +65,10 @@ class _Tag extends StatelessWidget {
 }
 
 class _Title extends StatelessWidget {
-  const _Title();
+  final String title;
+  final String highlightedTitle;
+
+  const _Title({required this.title, required this.highlightedTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -68,13 +80,13 @@ class _Title extends StatelessWidget {
       letterSpacing: -0.02 * 60,
       fontFamily: FontFamily.spaceGrotesk.value,
       textSpans: [
-        const TextSpan(text: 'Cross-platform apps,\n'),
+        TextSpan(text: title),
         TextSpan(
-          text: 'built to last.',
+          text: highlightedTitle,
           style: TextStyle(
-            decoration: TextDecoration.underline,
             decorationThickness: 1,
             decorationColor: primary,
+            decoration: TextDecoration.underline,
           ),
         ),
       ],
@@ -83,7 +95,10 @@ class _Title extends StatelessWidget {
 }
 
 class _Description extends StatelessWidget {
-  const _Description();
+  final String description;
+  final List<String> skills;
+
+  const _Description({required this.description, required this.skills});
 
   @override
   Widget build(BuildContext context) {
@@ -92,15 +107,15 @@ class _Description extends StatelessWidget {
       child: CustomText(
         size: 15,
         height: 1.6,
+        text: description,
         type: FontType.medium,
         fontFamily: FontFamily.inter.value,
         color: Theme.of(context).colorScheme.onSurfaceVariant,
-        text: "I'm Hany Magdy Hagar. I build reliable, user-focused mobile apps with ",
-        textSpans: const [
+        textSpans: [
           WidgetSpan(
             alignment: PlaceholderAlignment.baseline,
             baseline: TextBaseline.alphabetic,
-            child: _AnimatedSkills(),
+            child: _AnimatedSkills(skills: skills),
           ),
         ],
       ),
@@ -108,15 +123,10 @@ class _Description extends StatelessWidget {
   }
 }
 
-const _skills = [
-  'Flutter and Dart.',
-  'BLoC / Cubit.',
-  'Clean Architecture.',
-  'REST APIs and Firebase.',
-];
-
 class _AnimatedSkills extends StatelessWidget {
-  const _AnimatedSkills();
+  final List<String> skills;
+
+  const _AnimatedSkills({required this.skills});
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +136,7 @@ class _AnimatedSkills extends StatelessWidget {
       isAnimated: true,
       type: FontType.medium,
       fontFamily: FontFamily.spaceGrotesk.value,
-      textSpans: [for (final skill in _skills) TextSpan(text: skill)],
+      textSpans: [for (final skill in skills) TextSpan(text: skill)],
     );
   }
 }
