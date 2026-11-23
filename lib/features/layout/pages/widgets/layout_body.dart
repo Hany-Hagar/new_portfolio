@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../manager/layout_cubit.dart';
-import '../../../home/views/home_view.dart';
+import '../../../home/presentation/views/home_view.dart';
 
 class LayoutBody extends StatelessWidget {
   const LayoutBody({super.key});

@@ -1,10 +1,10 @@
+import 'home_quick_facts.dart';
 import 'package:flutter/material.dart';
-
-import '../../../core/enums/font_type.dart';
-import '../../../core/widgets/custom_text.dart';
-import '../../layout/manager/layout_cubit.dart';
-import '../../../core/widgets/custom_button.dart';
-import '../../../core/widgets/custom_divider.dart';
+import '../../../../core/enums/font_type.dart';
+import '../../../layout/manager/layout_cubit.dart';
+import '../../../../core/widgets/custom_text.dart';
+import '../../../../core/widgets/custom_button.dart';
+import '../../../../core/widgets/custom_divider.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key});
@@ -19,7 +19,8 @@ class HomeBody extends StatelessWidget {
         _Title(),
         _Description(),
         _Buttons(),
-        CustomDivider(endIndent: 14, padding: EdgeInsets.symmetric(vertical: 10),),
+        CustomDivider(endIndent: 14, padding: EdgeInsets.only(top: 10),),
+        QuickFacts(),
       ],
     );
   }
