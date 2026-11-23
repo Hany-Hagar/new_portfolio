@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../manager/layout_cubit.dart';
+import '../../../experiences/presentation/views/experience_view.dart';
 import '../../../home/presentation/views/home_view.dart';
 
 class LayoutBody extends StatelessWidget {
@@ -12,10 +13,11 @@ class LayoutBody extends StatelessWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       children: [
-        HomeView(),
+        HomeView(key: cubit.keys[0]),
+        ExperienceView(key: cubit.keys[1]),
         ...List.generate(
-          cubit.keys.length - 1,
-          (index) => Placeholder(key: cubit.keys[index + 1]),
+          cubit.keys.length - 2,
+          (index) => Placeholder(key: cubit.keys[index + 2]),
         ),
       ],
     );
