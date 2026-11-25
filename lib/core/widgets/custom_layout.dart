@@ -27,17 +27,14 @@ class CustomLayout extends StatelessWidget {
             thumbVisibility: true,
             child: SingleChildScrollView(
               controller: controller,
-              child: ConstrainedBox(
-                constraints: BoxConstraints(minHeight: constraints.maxHeight),
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 0, 32, 0),
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 1200),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [appBar, body],
-                      ),
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 0, 32, 0),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 1200),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [appBar, body],
                     ),
                   ),
                 ),

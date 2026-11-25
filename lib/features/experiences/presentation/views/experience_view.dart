@@ -3,7 +3,7 @@ import '../widgets/experience_body.dart';
 import '../../../../core/widgets/custom_view.dart';
 
 class ExperienceView extends StatelessWidget {
-  const new({super.key});
+  const ExperienceView({super.key});
 
   @override
   Widget build(BuildContext context) {
