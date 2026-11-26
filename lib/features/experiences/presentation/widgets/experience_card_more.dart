@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../core/enums/font_type.dart';
 import '../../data/models/experience_model.dart';
 import '../../../../core/widgets/custom_list.dart';
@@ -33,14 +34,13 @@ class _Techs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var color = Theme.of(context).scaffoldBackgroundColor;
     return Padding(
       padding: const EdgeInsets.only(top: 4.0),
       child: Wrap(
         spacing: 8,
         runSpacing: 4,
         children: techs
-            .map((tech) => CustomChip(label: tech, backgroundColor: color))
+            .map((tech) => CustomChip(label: tech))
             .toList(),
       ),
     );
@@ -69,7 +69,7 @@ class _Highlights extends StatelessWidget {
               textSpans: [
                 TextSpan(
                   text: '▹',
-                  style: TextStyle(color: primary),
+                  style: TextStyle(color: primary, fontSize: 14),
                 ),
                 const WidgetSpan(child: SizedBox(width: 10)),
                 TextSpan(text: highlight),
