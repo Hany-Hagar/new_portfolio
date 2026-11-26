@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../manager/layout_cubit.dart';
-import '../../../contact/views/contact_view.dart';
+import '../../../contact/pages/views/contact_view.dart';
 import '../../../home/presentation/views/home_view.dart';
 import '../../../projects/pages/views/projects_view.dart';
 import '../../../skills/presentation/pages/views/skills_view.dart';

@@ -1,14 +1,14 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../core/widgets/custom_text_button.dart';
-import '../../layout/manager/layout_cubit.dart';
+import '../../../../core/widgets/custom_text_button.dart';
+import '../../../layout/manager/layout_cubit.dart';
 import '../widgets/contact_body.dart';
 
 import 'package:flutter/material.dart';
 
-import '../../../core/widgets/custom_text.dart';
-import '../../../core/widgets/custom_view.dart';
-import '../../../core/widgets/custom_divider.dart';
+import '../../../../core/widgets/custom_text.dart';
+import '../../../../core/widgets/custom_view.dart';
+import '../../../../core/widgets/custom_divider.dart';
 
 class ContactView extends StatelessWidget {
   const ContactView({super.key});
