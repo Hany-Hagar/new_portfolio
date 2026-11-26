@@ -13,12 +13,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_localizations:
-    sdk: flutter
-
-  # Localization
-  slang: ^4.19.2
-  slang_flutter: ^4.19.0
 
   # State management
   flutter_bloc: ^9.1.1
@@ -44,8 +38,6 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^6.0.0
-  build_runner: ^2.10.4
-  slang_build_runner: ^4.19.0
 
 
 flutter:
@@ -54,12 +46,12 @@ flutter:
   assets:
     - assets/fonts/
     - assets/images/
+    - assets/images/Twins/
     - assets/images/Surrah/
     - assets/images/Stbtrfx/
     - assets/images/Al Reef/
     - assets/images/American Soft/
     - assets/images/Al Reef Dashboard/
-    - assets/images/Twins/
 
   fonts:
     - family: SpaceGrotesk

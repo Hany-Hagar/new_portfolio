@@ -186,7 +186,7 @@ class _Links extends StatelessWidget {
               itemSize: 14,
               icon: link.icon,
               title: link.label,
-              onPressed: () => openUrl(context, link.url),
+              onPressed: () => UrlService.openUrl(context, link.url),
             ),
           )
           .toList(),

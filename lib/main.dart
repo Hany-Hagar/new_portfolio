@@ -1,16 +1,12 @@
 import 'core/utils/theme.dart';
 import 'package:flutter/material.dart';
-import 'translation/gen/translations.g.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'features/layout/manager/layout_cubit.dart';
 import 'features/layout/pages/views/layout_view.dart';
 import 'features/skills/presentation/manager/skills_cubit.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  LocaleSettings.useDeviceLocale();
-  runApp(TranslationProvider(child: const MyApp()));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -30,9 +26,6 @@ class MyApp extends StatelessWidget {
         home: const LayoutView(),
         debugShowCheckedModeBanner: false,
         title: 'Hany Magdy | Flutter Developer',
-        supportedLocales: AppLocaleUtils.supportedLocales,
-        locale: TranslationProvider.of(context).flutterLocale,
-        localizationsDelegates: GlobalMaterialLocalizations.delegates,
       ),
     );
   }
