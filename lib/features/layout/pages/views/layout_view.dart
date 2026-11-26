@@ -4,6 +4,7 @@ import '../../manager/layout_cubit.dart';
 import '../../../../core/models/action_model.dart';
 import '../../../../core/widgets/custom_layout.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
+import '../../../contact/data/database/contact_data.dart';
 
 class LayoutView extends StatelessWidget {
   const LayoutView({super.key});
@@ -15,7 +16,7 @@ class LayoutView extends StatelessWidget {
       controller: ScrollController(),
       appBar: CustomAppBar(
         actions: actions,
-        title: "Hany Hagar",
+        title: myContact.name,
         actionTap: (value) => cubit.scrollTo(value),
       ),
       body: const LayoutBody(),

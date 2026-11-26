@@ -2,7 +2,7 @@ import 'experience_card.dart';
 
 import 'package:flutter/material.dart';
 
-import '../../data/database/experience_database.dart';
+import '../../data/database/experience_data.dart';
 import '../../../../core/widgets/custom_timeline.dart';
 
 class ExperienceBody extends StatelessWidget {
