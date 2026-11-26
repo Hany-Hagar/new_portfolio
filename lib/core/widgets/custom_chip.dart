@@ -5,17 +5,21 @@ import 'package:flutter/material.dart';
 
 class CustomChip extends StatelessWidget {
   final String label;
+  final Color? color;
   final String? title;
   final bool selected;
   final Widget? leading;
-  final Color? backgroundColor;
+  final double? borderRadius;
+  final EdgeInsetsGeometry? padding;
 
   const CustomChip({
     super.key,
     this.title,
+    this.color,
     this.leading,
+    this.padding,
+    this.borderRadius,
     required this.label,
-    this.backgroundColor,
     this.selected = false,
   });
 
@@ -23,25 +27,25 @@ class CustomChip extends StatelessWidget {
   Widget build(BuildContext context) {
     var hovered = false;
     final theme = Theme.of(context);
-    final primary = theme.colorScheme.primary;
+    final primary = color ?? theme.colorScheme.primary;
+    var paddingData =
+        padding ?? const EdgeInsets.symmetric(horizontal: 4, vertical: 8);
 
     return StatefulBuilder(
       builder: (_, setState) {
         final active = hovered || selected;
-        var raduis = title != null
-            ? BorderRadius.circular(12)
-            : BorderRadius.circular(24);
+        final radius = BorderRadius.circular(
+          borderRadius ?? (title != null ? 12 : 24),
+        );
         return MouseRegion(
           onEnter: (_) => setState(() => hovered = true),
           onExit: (_) => setState(() => hovered = false),
           child: Chip(
             avatar: leading,
-            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+            padding: paddingData,
+            shape: RoundedRectangleBorder(borderRadius: radius),
             side: BorderSide(color: active ? primary : theme.dividerColor),
-            shape: RoundedRectangleBorder(borderRadius: raduis),
-            backgroundColor: active
-                ? primary.withValues(alpha: 0.16)
-                : backgroundColor,
+            backgroundColor: active ? primary.withValues(alpha: 0.12) : color,
             label: _Label(
               title: title,
               label: label,

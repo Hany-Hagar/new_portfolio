@@ -5,11 +5,13 @@ class CustomCard extends StatelessWidget {
   final Color? glowColor;
   final Function()? onTap;
   final EdgeInsetsGeometry? padding;
+  final Clip clipBehavior;
   const CustomCard({
     super.key,
     this.onTap,
     this.padding,
     this.glowColor,
+    this.clipBehavior = Clip.antiAlias,
     required this.body,
   });
 
@@ -25,6 +27,7 @@ class CustomCard extends StatelessWidget {
           onEnter: (_) => setState(() => hovered = true),
           onExit: (_) => setState(() => hovered = false),
           child: AnimatedContainer(
+            clipBehavior: clipBehavior,
             duration: const Duration(milliseconds: 300),
             padding: padding ?? const EdgeInsets.all(16),
             curve: const Cubic(0.2, 0.7, 0.2, 1),
