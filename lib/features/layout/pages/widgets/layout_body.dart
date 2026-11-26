@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../manager/layout_cubit.dart';
 import '../../../home/presentation/views/home_view.dart';
 import '../../../projects/pages/views/projects_view.dart';
+import '../../../skills/presentation/pages/views/skills_view.dart';
 import '../../../experiences/presentation/views/experience_view.dart';
 
 class LayoutBody extends StatelessWidget {
@@ -17,10 +18,8 @@ class LayoutBody extends StatelessWidget {
         HomeView(key: cubit.keys[0]),
         ExperienceView(key: cubit.keys[1]),
         ProjectsView(key: cubit.keys[2]),
-        ...List.generate(
-          cubit.keys.length - 3,
-          (index) => Placeholder(key: cubit.keys[index + 3]),
-        ),
+        SkillsView(key: cubit.keys[3]),
+        Placeholder(key: cubit.keys[4]),
       ],
     );
   }
