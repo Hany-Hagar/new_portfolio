@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../data/models/contact_model.dart';
 import '../../../../core/utils/url_service.dart';
 import '../../../../../core/widgets/custom_text.dart';
@@ -99,7 +100,7 @@ class _ContactEmail extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomButton(
       label: "Send an email",
-      onPressed: () => UrlService.openEmail(context, email),
+      onPressed: () => UrlService.sendEmail(context, to: email),
     );
   }
 }
